@@ -10,3 +10,7 @@ We use the publicly available KiDS-450 data (see <a href="http://kids.strw.leide
 $$
 \left[\Omega_{\textrm{cdm}}h^{2},\,\Omega_{\textrm{b}}h^{2},\,\textrm{ln}\left(10^{10}A_{s}\right),\,n_{s},\,h,\,\Sigma m_{\nu}\right]
 $$
+
+### Note 
+
+<p align="justify">We do not provide all the GPs (MOPED and band powers) in the folder gps because the GP models require $\mathcal{O}(N_{\textrm{train}}^{2})$ memory storage. We provide only one GP model, for computing $\sigma_{8}$.</p>
