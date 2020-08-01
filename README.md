@@ -15,4 +15,4 @@ In particular, we emulate three quantities
 
 ### Note 
 
-<p align="justify">We do not provide all the GPs (MOPED and band powers) in the folder gps because the GP models require <img src="/tex/6b6c021e426987f0a7fb2eabcf24461f.svg?invert_in_darkmode&sanitize=true" align=middle width=68.16691199999998pt height=26.76175259999998pt/> memory storage. We provide only one GP model, for computing <img src="/tex/69bd68f5246fed6ce37aca9dff83028c.svg?invert_in_darkmode&sanitize=true" align=middle width=15.94565279999999pt height=14.15524440000002pt/>.</p>
+<p align="justify">We do not provide all the GPs (MOPED and band powers) in the folder gps because the GP models require <img src="/tex/6b6c021e426987f0a7fb2eabcf24461f.svg?invert_in_darkmode&sanitize=true" align=middle width=68.16691199999998pt height=26.76175259999998pt/> memory storage. However, we also share the scripts to train the Gaussian Processes for MOPED and band powers respectively. We provide only one GP model, for computing <img src="/tex/69bd68f5246fed6ce37aca9dff83028c.svg?invert_in_darkmode&sanitize=true" align=middle width=15.94565279999999pt height=14.15524440000002pt/>.</p>
