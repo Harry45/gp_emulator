@@ -17,4 +17,4 @@ $$
 
 ### Note 
 
-<p align="justify">We do not provide all the GPs (MOPED and band powers) in the folder gps because the GP models require $\mathcal{O}(N_{\textrm{train}}^{2})$ memory storage. We provide only one GP model, for computing $\sigma_{8}$.</p>
+<p align="justify">We do not provide all the GPs (MOPED and band powers) in the folder gps because the GP models require $\mathcal{O}(N_{\textrm{train}}^{2})$ memory storage. However, we also share the scripts to train the Gaussian Processes for MOPED and band powers respectively. We provide only one GP model, for computing $\sigma_{8}$.</p>
