@@ -1,0 +1,26 @@
+data_directory  			= '/home/harry/Dropbox/gp_emulator/data_for_likelihood/'
+correct_resetting_bias      = True 
+photoz_method               = 'Nz_DIR'
+bootstrap_photoz_errors     = False
+
+index_bootstrap_low         = 0
+index_bootstrap_high        = 999
+
+include_neutrino            = True
+
+k_max_h_by_Mpc  			= 50.
+nzmax           			= 72 
+nellsmax        			= 39 # default: 39
+mode            			= 'halofit'
+
+zbin_min        			= [0.10, 0.30, 0.60]
+zbin_max        			= [0.30, 0.60, 0.90]
+
+bands_EE_to_use             = [0, 1, 1, 1, 1, 0, 0]
+bands_BB_to_use             = [1, 1, 1, 1, 0, 0]
+fit_cross_correlations_only = False
+
+baryon_feedback             = True
+baryon_model                = 'AGN'
+
+use_nuisance                = ['A_bary', 'A_IA', 'A_noise_z1', 'A_noise_z2', 'A_noise_z3']
