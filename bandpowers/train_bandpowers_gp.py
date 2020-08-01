@@ -1,15 +1,8 @@
 '''
 Author: Arrykrishna Mootoovaloo
-
-The GPs are trained in parallel via the function below.
-
-Note that we supply a table in the following format:
-
-|inputParameters|B_0|B_1|B_2|B_3|...|B_23|
-
-where:
-- inputParameters is a matrix of size N_train and N_dim
-- B_0, B_1, ..., B_23 is the i^th (transformed) band power evaluated at these input parameters
+Email: a.mootoovaloo17@imperial.ac.uk
+Status: Under development
+Description: script for training the GPs for the band powers
 '''
 
 import os
@@ -26,6 +19,7 @@ np.set_printoptions(precision=4, suppress=True)
 BND = np.repeat(np.array([[-1.5, 6]]), 9, axis=0)
 BND[0] = np.array([-1.5, 2])
 
+
 def worker(args):
     '''
     inputs to the GP class
@@ -38,32 +32,45 @@ def worker(args):
 
 class TrainGP:
     '''
-    inputs:
-        directory (string):
+    inputs
+    ------
+    n_band (int) : number of band powers
+
+    file_name (str) : the csv file containing the training points
+
+    savedir (str) : directory for storing the GPs
+
+    ndim (int) : the number of dimension for the problem
+
     '''
 
-    def __init__(
-            self,
-            directory,
-            n_band=24,
-            file_name='training_points/bandpowers_1000.csv',
-            savedir='gps/bandpowers',
-            ndim=8):
+    def __init__(self, n_band=24, file_name='training_points/bandpowers_1000.csv', savedir='gps', ndim=8):
+
+        # number of band powers
         self.n_band = n_band
+
+        # number of dimension
         self.ndim = ndim
+
+        # directory where we want to save the GPs
         self.savedir = savedir
-        self.all_data = []
+
+        # list to store the inputs to the GP
         self.arguments = []
-        self.directory = directory
+
+        # the file name for the training points
         self.file_name = file_name
-        self.data = np.array(pd.read_csv(self.directory + self.file_name))[:, 1:]
+
+        # the data
+        self.data = np.array(pd.read_csv(self.file_name))[:, 1:]
+
+        # inputs to the emulator
         self.input = self.data[:, 0:self.ndim]
 
-        if not os.path.exists(self.directory + self.savedir):
-            os.makedirs(self.directory + self.savedir)
+        if not os.path.exists(self.savedir):
+            os.makedirs(self.savedir)
 
     def generate_args(self, sigma, training=False, nrestart=1):
-
         '''
         inputs:
             sigma (np.ndarray): the noise term - we assume it's just the
@@ -101,31 +108,18 @@ class TrainGP:
             pool.close()
 
             for j in range(n_process):
-                direct = self.directory + self.savedir + '/' + file_name + '_' + str((i * n_process) + j)
+                direct = self.savedir + '/' + file_name + '_' + str((i * n_process) + j)
                 with open(direct + '.pkl', 'wb') as gp_dummy:
                     dill.dump(gps[j], gp_dummy)
 
             del gps
 
+
 if __name__ == '__main__':
-
-# Option-4/ : 1000_8D_table_prior_moped_3_998.csv
-# Option-5/ : 1500_8D_table_prior_moped_3_1499.csv
-# Option-6/ : 2000_8D_table_prior_moped_3_1998.csv
-# Option-7/ : 2500_8D_table_prior_moped_3_2499.csv
-# Option-8/ : 3000_8D_table_prior_moped_3_3000.csv
-
-    DIR = '/Users/Harry/Dropbox/gp_emulator/'
 
     SIGMA = [-40.0]
     TRAIN = True
 
-    GPS = TrainGP(
-        directory=DIR,
-        n_band=24,
-        file_name='training_points/bandpowers_1000.csv',
-        savedir='gps/bandpowers',
-        ndim=8)
+    GPS = TrainGP(n_band=24, file_name='training_points/bandpowers_1000.csv', savedir='gps', ndim=8)
     GPS.generate_args(sigma=SIGMA, training=TRAIN, nrestart=5)
     # GPS.trainings(n_process = 8, file_name = 'gp')
-    
