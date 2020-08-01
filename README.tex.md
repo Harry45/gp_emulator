@@ -2,6 +2,10 @@
 
 We use the publicly available KiDS-450 data (see <a href="http://kids.strw.leidenuniv.nl/sciencedata.php">here</a>). 
 
+In particular, we emulate three quantities
+- $\sigma_{8}$ (<a href="https://github.com/Harry45/gp_emulator/tree/master/sigma_eight">here</a>)
+- band powers (<a href="https://github.com/Harry45/gp_emulator/tree/master/bandpowers">here</a>)
+- MOPED coefficients (<a href="https://github.com/Harry45/gp_emulator/tree/master/moped">here</a>)
 
 ### Computing $\sigma_{8}$
 
